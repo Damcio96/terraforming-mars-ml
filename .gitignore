@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+*.ipynb
+
+# PyTorch / TensorFlow / ML
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.tflite
+
+# System / OS
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Data / outputs
+data/
+outputs/
+models/
