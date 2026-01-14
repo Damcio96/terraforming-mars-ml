@@ -18,12 +18,9 @@ class Game:
 
     def step(self):
         turn_info = self.state.turn_info
-        current_player_id = turn_info.current_player
-        player = self.players[current_player_id]
-
+        player = self.players[turn_info.current_player]
         mask = self.masker.compute_legal_mask(self.state)
         action = player.choose_action(self.state, mask)
-
         self.state = self.applier.apply(self.state, action)
 
     def run(self):

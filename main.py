@@ -9,12 +9,12 @@ from player.human_player import HumanPlayer
 import logging
 
 logging.basicConfig(
-    level=logging.DEBUG,   #0INFO / WARNING / ERROR
+    level=logging.DEBUG,   #INFO / WARNING / ERROR
     format="%(message)s"
 )
 
 def main():
-    players_state = tuple(
+    player_states = tuple(
         PlayerState(
             id=i,
             terraforming_rating=20,
@@ -28,13 +28,14 @@ def main():
     )
 
     state = GameState(
-        players=players_state,
+        player_states=player_states,
         board=Board(),
         turn_info=TurnInfo(
             generation = 1,
             first_player = 0,
             current_player = 0,
             passed_players=(False, False),
+            has_acted=False
         ),
     )
 

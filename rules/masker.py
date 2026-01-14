@@ -5,13 +5,20 @@ from game.state import GameState
 
 class Masker:
     def compute_legal_mask(self, state: GameState) -> np.ndarray:
-        mask = np.zeros(len(ActionType), dtype=np.int8)
 
+        mask = np.zeros(len(ActionType), dtype=np.int8)
         cp = state.turn_info.current_player
+        player = state.player_states[cp]
 
         if not state.turn_info.passed_players[cp]:
             mask[ActionType.PASS] = 1
 
+            if state.turn_info.has_acted:
+                mask[ActionType.PASS] = 0
+                mask[ActionType.WAIT] = 1
+
+            if (player.credits >= 14 and state.board.temperature < state.board.max_temperature):
+                mask[ActionType.ASTEROID] = 1
         return mask
 
     # def _mask_turn_actions(self, mask):

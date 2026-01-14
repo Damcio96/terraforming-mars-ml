@@ -8,10 +8,10 @@ class HumanPlayer(Player):
         legal_actions = [i for i, m in enumerate(mask) if m]
 
         player_index = state.turn_info.current_player
-        player_id = state.players[player_index].id
+        player_id = state.player_states[player_index].id
         print("\nGeneration: ", state.turn_info.generation)
         print("Player: ", player_id)
-        print(state.players[player_index])
+        print(state.player_states[player_index])
         print("Legal actions:")
         for i in legal_actions:
             print(f"{i}: {ActionType(i).name}")

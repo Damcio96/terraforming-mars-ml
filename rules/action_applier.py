@@ -1,48 +1,53 @@
 from actions.action_type import ActionType
 from game.state import GameState
 from game.turn_info import TurnInfo
+from rules.turn_rules import TurnRules
+from rules.generation_rules import GenerationRules
 import logging
 
 logger = logging.getLogger(__name__)
 
 class ActionApplier:
-
-    def _advance_turn(self, turn_info: TurnInfo) -> TurnInfo:
-        passed = list(turn_info.passed_players)
-        n = len(passed)
-        next_player = turn_info.current_player
-
-        while True:
-            next_player = (next_player + 1) % n
-            if not passed[next_player]:
-                return turn_info.update(current_player=next_player)
             
     def apply(self, state: GameState, action: ActionType) -> GameState:
         if action == ActionType.PASS:
             return self._apply_pass(state)
+        if action == ActionType.WAIT:
+            return self._apply_wait(state)
+        if action == ActionType.ASTEROID:
+            return self._apply_asteroid(state)
 
+        logger.debug("ActionApplier received action: %s (%s)", action, int(action))
         raise NotImplementedError(action)
+
+    def _apply_wait(self, state: GameState) -> GameState:
+        updated_turn_info = TurnRules.advance_turn(state.turn_info)
+        return state.update(turn_info=updated_turn_info)
 
     def _apply_pass(self, state: GameState) -> GameState:
         passed = list(state.turn_info.passed_players)
         passed[state.turn_info.current_player] = True
-        temp_turn_info = state.turn_info.update(passed_players=tuple(passed))
+        updated_turn_info = state.turn_info.update(passed_players=tuple(passed))
 
         if all(passed):
-            logger.debug("\nThe action phase ends. \nThe generation %s has ended.", state.turn_info.generation)
-            n = len(passed)
-            new_first = (state.turn_info.first_player + 1) % n
-            new_turn_info = temp_turn_info.update(
-                generation=state.turn_info.generation + 1,
-                first_player = new_first,
-                current_player = new_first,
-                passed_players = tuple(False for _ in passed)
-            )
+            logger.debug("\nThe action phase ends. \nThe generation %s has ended.", updated_turn_info.generation)
+            return GenerationRules.end_generation(state=state.update(turn_info=updated_turn_info))
         else:
-            new_turn_info = self._advance_turn(temp_turn_info)
-        
-        return GameState(
-            players=state.players,
-            board=state.board,
-            turn_info=new_turn_info
+            updated_turn_info = TurnRules.advance_player(updated_turn_info)
+            return state.update(turn_info=updated_turn_info)
+    
+    def _apply_asteroid(self, state: GameState) -> GameState:
+        cp = state.turn_info.current_player
+        player_state = state.player_states[cp]
+        updated_player_state = player_state.update(
+            credits=player_state.credits - 14,
+            terraforming_rating=player_state.terraforming_rating + 1
         )
+        updated_player_states = list(state.player_states)
+        updated_player_states[cp] = updated_player_state
+        updated_board = state.board.update(temperature=state.board.temperature + 1)
+        updated_turn_info = TurnRules.advance_turn(state.turn_info)
+
+        return state.update(player_states=tuple(updated_player_states), board=updated_board, turn_info=updated_turn_info)
+
+

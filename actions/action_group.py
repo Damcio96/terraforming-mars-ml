@@ -14,8 +14,15 @@ ACTION_GROUP = {
     ActionType.PASS: ActionGroup.TURN,
     ActionType.WAIT: ActionGroup.TURN,
 
-    ActionType.PLANTS_INTO_GREENERY: ActionGroup.CONVERSION,
     ActionType.HEAT_INTO_TEMPERATURE: ActionGroup.CONVERSION,
+    ActionType.PLANTS_INTO_GREENERY: ActionGroup.CONVERSION,
+
+    ActionType.SELL_PATENTS: ActionGroup.STANDARD_PROJECT,
+    ActionType.POWER_PLANT: ActionGroup.STANDARD_PROJECT,
+    ActionType.ASTEROID: ActionGroup.STANDARD_PROJECT,
+    ActionType.AQUIFER: ActionGroup.STANDARD_PROJECT,
+    ActionType.GREENERY: ActionGroup.STANDARD_PROJECT,
+    ActionType.CITY: ActionGroup.STANDARD_PROJECT,
 
     ActionType.CLAIM_TERRAFORMER: ActionGroup.MILESTONES,
     ActionType.CLAIM_MAYOR: ActionGroup.MILESTONES,
@@ -28,13 +35,6 @@ ACTION_GROUP = {
     ActionType.FUND_SCIENTIST: ActionGroup.AWARDS,
     ActionType.FUND_THERMALIST: ActionGroup.AWARDS,
     ActionType.FUND_MINER: ActionGroup.AWARDS,
-
-    ActionType.SELL_PATENTS: ActionGroup.STANDARD_PROJECT,
-    ActionType.POWER_PLANT: ActionGroup.STANDARD_PROJECT,
-    ActionType.ASTEROID: ActionGroup.STANDARD_PROJECT,
-    ActionType.AQUIFER: ActionGroup.STANDARD_PROJECT,
-    ActionType.GREENERY: ActionGroup.STANDARD_PROJECT,
-    ActionType.CITY: ActionGroup.STANDARD_PROJECT,
 
     # ActionType.PLAY_CARD_SLOT_0: ActionGroup.CARD_PLAY,
     # ActionType.PLAY_CARD_SLOT_1: ActionGroup.CARD_PLAY,
