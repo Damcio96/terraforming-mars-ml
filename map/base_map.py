@@ -1,0 +1,162 @@
+from dataclasses import dataclass
+from map.tile_definition import TileBaseType, Bonus
+
+@dataclass(frozen=True)
+class BaseMap:
+    base_types: tuple[TileBaseType,...]
+    bonuses: tuple[tuple[Bonus, ...],...]
+
+BASE_MAP_STANDARD = BaseMap(
+    base_types=(
+        #row 1
+        TileBaseType.NORMAL,
+        TileBaseType.OCEAN_ONLY,
+        TileBaseType.NORMAL,
+        TileBaseType.OCEAN_ONLY,
+        TileBaseType.OCEAN_ONLY,
+        #row 2
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.OCEAN_ONLY,
+        #row 3
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        #row 4
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,        
+        TileBaseType.OCEAN_ONLY,
+        #row 5
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,   
+        TileBaseType.RESERVED,
+        TileBaseType.OCEAN_ONLY,
+        TileBaseType.OCEAN_ONLY,
+        TileBaseType.OCEAN_ONLY,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL, 
+        #row 6     
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.OCEAN_ONLY,
+        TileBaseType.OCEAN_ONLY,
+        TileBaseType.OCEAN_ONLY,
+        #row 7
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        #row 8
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        #row 9
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.NORMAL,
+        TileBaseType.OCEAN_ONLY, 
+        #PHobos Space Haven
+        TileBaseType.RESERVED,
+        #Ganymede Colony 
+        TileBaseType.RESERVED,
+    ),
+    bonuses=(
+        #row 1
+        (Bonus.STEEL, Bonus.STEEL),
+        (Bonus.STEEL, Bonus.STEEL),
+        (),
+        (),
+        (Bonus.CARD,),
+        #row 2
+        (),
+        (Bonus.STEEL,),
+        (),
+        (),
+        (),
+        (Bonus.CARD, Bonus.CARD),
+        #row 3
+        (Bonus.CARD,),
+        (),
+        (),
+        (),
+        (),
+        (),
+        (Bonus.STEEL,),
+        #row 4
+        (Bonus.PLANT, Bonus.TITANIUM),
+        (Bonus.PLANT,),
+        (Bonus.PLANT,),
+        (Bonus.PLANT,),
+        (Bonus.PLANT, Bonus.PLANT),
+        (Bonus.PLANT,),
+        (Bonus.PLANT,),
+        (Bonus.PLANT, Bonus.PLANT),
+        #row 5
+        (Bonus.PLANT, Bonus.PLANT),
+        (Bonus.PLANT, Bonus.PLANT),
+        (Bonus.PLANT, Bonus.PLANT),
+        (Bonus.PLANT, Bonus.PLANT),
+        (Bonus.PLANT, Bonus.PLANT),
+        (Bonus.PLANT, Bonus.PLANT),
+        (Bonus.PLANT, Bonus.PLANT),
+        (Bonus.PLANT, Bonus.PLANT),
+        (Bonus.PLANT, Bonus.PLANT),
+        #row 6
+        (Bonus.PLANT,),
+        (Bonus.PLANT, Bonus.PLANT),
+        (Bonus.PLANT,),
+        (Bonus.PLANT,),
+        (Bonus.PLANT,),
+        (Bonus.PLANT,),
+        (Bonus.PLANT,),
+        (Bonus.PLANT,),
+        #row 7
+        (),
+        (),
+        (),
+        (),
+        (),
+        (Bonus.PLANT,),
+        (),
+        #row 8
+        (Bonus.STEEL, Bonus.STEEL),
+        (),
+        (Bonus.CARD,),
+        (Bonus.CARD,),
+        (),
+        (Bonus.TITANIUM,),
+        #row 9
+        (Bonus.STEEL,),
+        (Bonus.STEEL, Bonus.STEEL),
+        (),
+        (),
+        (Bonus.TITANIUM, Bonus.TITANIUM),
+        #PHobos Space Haven
+        (),
+        #Ganymede Colony 
+        (),
+    )
+)
