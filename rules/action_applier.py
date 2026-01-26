@@ -1,6 +1,6 @@
 from actions.action_type import ActionType
-from game.state import GameState
-from game.turn_info import TurnInfo
+from state.state import GameState
+from state.turn_info import TurnInfo
 from rules.turn_rules import TurnRules
 from rules.generation_rules import GenerationRules
 import logging

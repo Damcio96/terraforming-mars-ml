@@ -1,5 +1,5 @@
-from game.state import GameState
-from game.turn_info import TurnInfo
+from state.state import GameState
+from state.turn_info import TurnInfo
 
 class GenerationRules:
 

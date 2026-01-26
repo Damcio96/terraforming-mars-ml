@@ -1,4 +1,4 @@
-from game.state import GameState
+from state.state import GameState
 from rules.masker import Masker
 from rules.action_applier import ActionApplier
 from player.human_player import HumanPlayer

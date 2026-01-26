@@ -1,9 +1,11 @@
-#TODO kolekcja zawierająca pola planszy
 from dataclasses import dataclass, replace
-from typing import Optional
+from state.tile import Tile
 
 @dataclass(frozen=True)
 class Board:
+
+    tiles: tuple[Tile, ...]
+    neighbors: tuple[tuple[int, ...], ...]
 
     max_temperature: int = 8
     max_oxygen: int = 14

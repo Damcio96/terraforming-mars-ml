@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from game.state import GameState
+from state.state import GameState
 from actions.action_type import ActionType
 import numpy as np
 

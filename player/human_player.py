@@ -1,5 +1,5 @@
 from player.player import Player
-from game.state import GameState
+from state.state import GameState
 from actions.action_type import ActionType
 
 class HumanPlayer(Player):

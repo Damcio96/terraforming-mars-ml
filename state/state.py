@@ -1,7 +1,7 @@
 from dataclasses import dataclass, replace
-from game.player_state import PlayerState
-from game.board import Board
-from game.turn_info import TurnInfo
+from state.player_state import PlayerState
+from state.board import Board
+from state.turn_info import TurnInfo
 
 @dataclass(frozen=True)
 class GameState:

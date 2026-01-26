@@ -1,12 +1,7 @@
-from dataclasses import dataclass
+from map.map_template import MapTemplate
 from map.tile_definition import TileBaseType, Bonus
 
-@dataclass(frozen=True)
-class BaseMap:
-    base_types: tuple[TileBaseType,...]
-    bonuses: tuple[tuple[Bonus, ...],...]
-
-BASE_MAP_STANDARD = BaseMap(
+THARSIS_MAP = MapTemplate(
     base_types=(
         #row 1
         TileBaseType.NORMAL,
@@ -78,7 +73,7 @@ BASE_MAP_STANDARD = BaseMap(
         TileBaseType.NORMAL,
         TileBaseType.NORMAL,
         TileBaseType.OCEAN_ONLY, 
-        #PHobos Space Haven
+        #Phobos Space Haven
         TileBaseType.RESERVED,
         #Ganymede Colony 
         TileBaseType.RESERVED,
@@ -88,8 +83,8 @@ BASE_MAP_STANDARD = BaseMap(
         (Bonus.STEEL, Bonus.STEEL),
         (Bonus.STEEL, Bonus.STEEL),
         (),
-        (),
         (Bonus.CARD,),
+        (),
         #row 2
         (),
         (Bonus.STEEL,),

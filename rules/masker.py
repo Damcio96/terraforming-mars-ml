@@ -1,6 +1,6 @@
 import numpy as np
 from actions.action_type import ActionType
-from game.state import GameState
+from state.state import GameState
 #from actions.action_group import ActionGroup, ACTION_GROUP
 
 class Masker:

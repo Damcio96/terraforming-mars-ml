@@ -1,4 +1,4 @@
-from game.turn_info import TurnInfo
+from state.turn_info import TurnInfo
 
 class TurnRules:
 
